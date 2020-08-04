@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>HappyBoba</title>
+<meta charset="UTF-8">
+
+<link href="style.css" rel="stylesheet">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quicksand:400,600&display=swap">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+</head>
+
+<body class="customer">
+    
+    <div id="container">
+            <header id="header">
+            <h1><a href="index.html">&hearts; HappyBoba &hearts;</a></h1>
+            </header>
+
+            <div id="menu">
+            <nav id="nav-main">
+            <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="categories.html">Categories</a></li>
+            <li><a href="items.html">Items</a></li>
+            <li><a href="customers.html">Customers</a></li>
+            <li><a href="orders.html">Orders</a></li>
+            </ul>
+            </nav><!-- /#nav-main -->
+
+            <img alt="happy boba time" src="images/background1.jpg" width="300" height="300"/>
+        </div><!-- #menu -->
+         
+        <div id="content">
+        <h2>Items</h2>
+        <form id="itemsForm">
+        <fieldset>
+            <legend>Create New Item</legend>
+            <label for="name">Item Name:</label>
+            <input type="text" name="name" id="name" placeholder="Name" size="30"><br><br>
+            <label for="price">Price of the item:</label>
+            $ <input type="text" name="price" id="price" placeholder="Price" size="20"><br><br>
+            <!-- <label for="sweet">Sweet Level of the item:</label>
+            <select name="sweet" id="sweet">
+                <option value="0">0%</option>
+                <option value="30">30%</option>
+                <option value="50">50%</option>
+                <option value="80">80%</option>
+                <option value="100">100%</option>
+            </select><br><br>
+            <label for="iced">Iced Level of the item:</label>
+            <select name="iced" id="iced">
+                <option value="0">0%</option>
+                <option value="30">30%</option>
+                <option value="50">50%</option>
+                <option value="80">80%</option>
+                <option value="100">100%</option>
+            </select><br><br> -->
+            <label for="categoryId">Category of the item:</label>
+            <select name="categoryId" id="categoryId">
+                <option value="1">Milk Tea</option>
+                <option value="2">Fruit Tea</option>
+                <option value="3">Coffee</option>
+            </select><br><br>
+            <input type="submit" id="createButton" value="Add Item">
+        </fieldset>
+        </form>
+    
+
+
+        <h2>Current Items</h2>
+            <table>
+                <tr>
+                <th>Name</th>
+                <th>Price</th> 
+                <th>Category</th>
+                <th>Action</th>
+                </tr>
+                <tr> 
+                    <td><input type="text" name="item1" value="Classic Milk Tea"></td>
+                    <td><input type="text" name="price" value="$3.99" size = 5></td> 
+                    <td>
+                        <select name="categoryOptions" id="categoryOptions">
+                            <option value="1">Milk Tea</option>
+                            <option value="2">Fruit Tea</option>
+                            <option value="3">Coffee</option>
+                        </select>
+                    </td>
+                    <td>
+                    <input type="button" id="update_1" value="Update">
+                    <input type="button" id="delete_1" value="Delete">
+                    </td>
+                </tr>
+                <tr>
+                    <td><input type="text" name="item1" value="Mango Green Tea"></td>
+                    <td><input type="text" name="price" value="$5.99" size = 5></td> 
+                    <td>
+                        <select name="categoryOptions" id="categoryOptions">
+                        <option value="1">Milk Tea</option>
+                        <option value="2">Fruit Tea</option>
+                        <option value="3">Coffee</option>
+                        </select>
+                    </td>
+                    <td>
+                        <input type="button" id="update_2" value="Update">
+                        <input type="button" id="delete_2" value="Delete">
+                    </td>
+                </tr>
+            </table>
+            
+        </div><!-- #content-->
+
+
+<footer id="footer">
+    <p class="copyright">&copy;2020 HappyBoba  &bull; Site designed by Team52 &bull; All Rights Reserved</p>
+</footer>
+</div><!-- #container -->
+
+</body>
+</html>

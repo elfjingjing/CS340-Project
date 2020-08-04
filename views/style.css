@@ -1,0 +1,179 @@
+/* This is the stylesheet for the Vienna Cafe site. */
+
+/* COLOR CODES */
+/*
+#ecdfc8;	/* rich brown  */
+
+
+
+/* FOR DEVO ONLY -- DELETE BEFORE SITE GOES LIVE */
+
+/*v, header, footer, nav, main, section, aside{
+    border: 1px solid red;
+}
+
+/* END DEVO ONLY STYLES */
+
+
+/* BROWSER RESETS */
+body, body * {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+a img{ /* linked images only */
+	border: 0; 
+}
+
+/* END BROWSER RESETS */
+
+
+/* GLOBAL FONT STYLES */
+html{
+	font-size: 18px;      
+}
+
+body{
+	
+	font-family: "Open Sans", Helvetica, Arial, sans-serif;
+	font-size: 100%;    
+	line-height: 1.6;  
+	color: #df7861;                    
+	background-color: #ecdfc8;	
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-attachment: fixed;
+}
+
+h1 {
+	display: block;
+	margin-left: 7.75em;
+}
+
+h2 {
+	font-size: 100%;
+	color: #df7861;
+}
+
+
+p, ol, ul {
+    margin: 0 0 .75em 0;	
+}
+
+ul {
+    margin-left: 1.25em;
+}
+
+#nav-main li {
+    font-size: 1.65em;
+}
+
+
+
+/* NAVIGATION */
+
+/* UNIVERSAL NAV LIST RESET */
+
+nav li {
+	list-style: none;	/* remove bullets from all nav lists */
+	margin: 0;	
+}
+
+/* NAV STYLES */
+#nav-main {
+	background-color:#df7861;	
+	padding: 1.5em 10%;	/* TB RL */	
+	overflow: hidden;
+}
+
+#nav-main li {
+	float: left;
+	margin-right: 2.7em;
+}
+
+
+#nav-main a:link,
+#nav-main a:visited {
+	color: #fcf8e8;	/* cream */
+	text-decoration: none;
+}
+
+
+#nav-main a:hover,
+#nav-main a:focus{
+	text-decoration: underline;
+	color:#7c3c21;  
+}
+
+
+/* LINK STYLES */
+
+#header h1 a:link,
+#header h1 a:visited {
+	color:#df7861;        
+	text-decoration: none;
+}
+
+#header h1 a:hover,
+#header h1 a:focus {
+	color:#7c3c21;        
+}
+
+
+/* TABLE STYLES */
+table {
+	border: 1px solid #df7861;
+	width: 620px;
+  }
+
+th, td {
+	padding: 15px;
+	text-align: left;
+  }
+
+/* LAYOUT STYLES */
+#container {
+    margin: auto;
+    width: 960px;
+    height:auto;
+    overflow: hidden;
+    background-color: #ecdfc8;        /* Light Pink */
+}
+
+
+#header {
+    margin-bottom: 5px;
+	overflow: hidden;
+	padding-left:2.5em;
+	clear: both;
+	color: #df7861;      
+	border-bottom: 2px solid #df7861;   
+    background-color: #ecb390;  
+}
+
+#menu {
+    margin: 10px;
+    width: 300px;
+    height: auto;
+	overflow: hidden;
+	float: left;
+}
+
+#content {
+    margin: 10px;
+    width:620px;
+    height: auto;
+    overflow: hidden;
+}
+
+#footer {
+    margin-top: 15px;
+    margin-bottom: 30px;
+    padding-top: 15px;
+    overflow: hidden;
+	clear: both;
+	color: #df7861;
+    border-top: 2px solid #df7861;         
+    background-color: #ecb390;         
+}

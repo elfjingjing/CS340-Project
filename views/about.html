@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>HappyBoba</title>
+<meta charset="UTF-8">
+
+<link href="style.css" rel="stylesheet">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quicksand:400,600&display=swap">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+</head>
+
+<body class="about">
+    <div id="container">
+        <header id="header">
+            <h1><a href="index.html">&hearts; HappyBoba &hearts;</a></h1>
+         </header>
+
+        <div id="menu">
+            <nav id="nav-main">
+            <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="categories.html">Categories</a></li>
+            <li><a href="items.html">Items</a></li>
+            <li><a href="customers.html">Customers</a></li>
+            <li><a href="orders.html">Orders</a></li>
+            </ul>
+            </nav><!-- /#nav-main -->
+
+            <img alt="happy boba time" src="images/background1.jpg" width="300" height="300"/>
+        </div><!-- #menu -->
+         
+        <div id="content">
+            <h1>Outline</h1>
+
+            <h3><a href="categories.html">Categories</a></h3>
+                <ul>
+                    <li>Create a new category.</li>        
+                    <li>Edit to update a category.</li>
+                    <li>Browse all categories or utilize a search/filter with a dynamically populated list of categories.</li>
+                    <li>Delete a category </li>
+                </ul>
+            <h3><a href="items.html">Items</a></h3>
+                <ul>
+                <li>Add a new item in a category.</li>
+                <li>Update item (edit its attributes or category).</li>
+                <li>Browse all items.</li>
+                <li>Delete item(s) without touching associated category.</li>
+                </ul>
+            <h3><a href="customers.html">Customers</a></h3>
+            <ul>
+                <li>Create a new customer.</li>
+                <li>Update customer information.</li>
+                <li>Browse all customer information.</li>
+                <li>Customer may have not made any order yet(NULLable relationship)</li>
+                <li>Delete customer account.</li>
+            </ul>
+            <h3><a href="orders.html">Orders</a></h3>
+            <ul>
+                <li>Add order(s) by a customer will also INSERT row(s) in the intersection table ItemsInOrders.</li>
+                <li>Update customer order information.</li>
+                <li>List all orders (can filter by customer).</li>
+                <li>Delete order(s) will remove row(s) from the intersection table but leave untouched Items and Categories .</li>
+            </ul>
+
+        </div><!-- #content -->
+ 
+
+<footer id="footer">
+    <p class="copyright">&copy;2020 HappyBoba  &bull; Site designed by Team52 &bull; All Rights Reserved</p>
+</footer>
+</div><!-- #container -->
+
+</body>
+</html>

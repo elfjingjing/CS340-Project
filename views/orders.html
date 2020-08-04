@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>HappyBoba</title>
+<meta charset="UTF-8">
+
+<link href="style.css" rel="stylesheet">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quicksand:400,600&display=swap">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+</head>
+
+<body>
+    <div id="container">
+            <header id="header">
+            <h1><a href="index.html">&hearts; HappyBoba &hearts;</a></h1>
+            </header>
+
+            <div id="menu">
+            <nav id="nav-main">
+            <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="categories.html">Categories</a></li>
+            <li><a href="items.html">Items</a></li>
+            <li><a href="customers.html">Customers</a></li>
+            <li><a href="orders.html">Orders</a></li>
+            </ul>
+            </nav><!-- /#nav-main -->
+
+            <img alt="happy boba time" src="images/background1.jpg" width="300" height="300"/>
+        </div><!-- #menu -->
+         
+        <div id="content">
+            <form id="ordersForm"></form>
+                <h2>Create a New Order</h2>
+                <select name ="selectCustomer" id="selectCustomer">
+                    <option value="1"  hidden>--Choose Customer--</option>
+                    <option>Jenny</option>
+                    <option>Kate</option>
+                    <option>Steve</option>
+                </select>
+                <input type="date" name ="orderDate" id="orderDate" size="20">
+                <select name ="selectPayment" id="selectPayment">
+                    <option value="1"  hidden>--Choose Payment--</option>>
+                    <option>cash</option>
+                    <option>debit</option>
+                    <option>credit</option>
+                    <option>coupon</option>
+                </select>
+                <br>
+                
+
+                <fieldset>
+                <legend>Order Details</legend>
+                <select name ="selectCategory" id="selectCustomer">
+                    <option value="1"  hidden>--Choose Category--</option>
+                    <option>Milk Tea</option>
+                    <option>Fruit Tea</option>
+                    <option>Coffe</option>
+                    <option>Smoothie</option>
+                </select>
+
+                <select name ="itemInCategory" id="itemInCustomer">
+                    <option value="1"  hidden>--Choose Item--</option>
+                    <option>Mango Green Tea</option>
+                </select>
+
+                <select name ="sweetOptions" id="sweetOptions">
+                    <option value="1"  hidden>--Choose Sweet--</option>
+                    <option>Relugar</option>
+                    <option>Half Sweet</option>
+                    <option>Less Sweet</option>
+                    <option>No Sweet</option>
+                </select>
+                <br>
+                <select name ="iceOption" id="iceOption">
+                    <option>iced</option>
+                    <option>less ice</option>
+                    <option>no ice</option>
+                </select>
+
+                <input type="text" name ="quantity" id="quantity">
+                <br>
+                <select name ="selectCategory" id="selectCustomer">
+                    <option value="1"  hidden>--Choose Category--</option>
+                    <option>Milk Tea</option>
+                    <option>Fruit Tea</option>
+                    <option>Coffe</option>
+                    <option>Smoothie</option>
+                </select>
+             
+                <select name ="itemInCategory" id="itemInCustomer">
+                    <option value="1"  hidden>--Choose Item--</option>
+                    <option>Mango Green Tea</option>
+                </select>
+
+                <select name ="sweetOptions" id="sweetOptions">
+                    <option value="1"  hidden>--Choose Sweet--</option>
+                    <option>Relugar</option>
+                    <option>Half Sweet</option>
+                    <option>Less Sweet</option>
+                    <option>No Sweet</option>
+                </select>
+                <br>
+                <select name ="iceOption" id="iceOption">
+                    <option>iced</option>
+                    <option>less ice</option>
+                    <option>no ice</option>
+                </select>
+
+                <input type="text" name ="quantity" id="quantity">
+                <br>
+                <select name ="selectCategory" id="selectCustomer">
+                    <option value="1"  hidden>--Choose Category--</option>
+                    <option>Milk Tea</option>
+                    <option>Fruit Tea</option>
+                    <option>Coffe</option>
+                    <option>Smoothie</option>
+                </select>
+             
+                <select name ="itemInCategory" id="itemInCustomer">
+                    <option value="1"  hidden>--Choose Item--</option>
+                    <option>Mango Green Tea</option>
+                </select>
+
+                <select name ="sweetOptions" id="sweetOptions">
+                    <option value="1"  hidden>--Choose Sweet--</option>
+                    <option>Relugar</option>
+                    <option>Half Sweet</option>
+                    <option>Less Sweet</option>
+                    <option>No Sweet</option>
+                </select>
+                <br>
+                <select name ="iceOption" id="iceOption">
+                    <option>iced</option>
+                    <option>less ice</option>
+                    <option>no ice</option>
+                </select>
+
+                <input type="text" name ="quantity" id="quantity">
+            </fieldset>
+
+                <input type="submit" id="postSubmit" value="Add">
+    
+            </form>
+         
+            <br>
+
+            <h2><label for="categories">Customers History Purchase</h2>
+                <select name="selectCustomer" id="selectCustomer">
+                  <option value="Jenny">Jenny</option>
+                  <option value="Kate">Kate</option>
+                  <option value="Steve">Steve</option>
+                </select>
+            <br>
+            <br>
+            <h2>History Orders</h2>
+            <table>
+                <tr>
+                    <th>Number</th>
+                    <th>Date</th>
+                    <th>Customer</th>
+                    <th>Items</th>
+                    <th>Qua</th>
+                    <th>Total</th>
+                </tr>
+                
+                  <tr>
+                    <td>1</td>
+                    <td>07/10/2020</td>
+                    <td>Jenny</td>
+                    <td>Mango Green Tea</td>
+                    <td>1</td>
+                    <td>$3.99</td>
+                  </tr>
+                   <tr>
+                    <td>1</td>
+                    <td>
+                     
+                    </td>
+                  </tr>
+            </table>
+        </div><!-- #content -->
+ 
+
+    <footer id="footer">
+        <p class="copyright">&copy;2020 HappyBoba  &bull; Site designed by Team52 &bull; All Rights Reserved</p>
+    </footer>
+</div><!-- #container -->
+
+</body>
+</html>
