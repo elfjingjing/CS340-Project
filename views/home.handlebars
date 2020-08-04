@@ -1,0 +1,47 @@
+{{#if hasResults}}
+{{results}}
+{{else}}
+<form id="updateForm" style="visibility:hidden;position: absolute;z-index:999;background-color:white;width:400px;height:300px;left:50%;margin-left:-200px;top:50%;margin-top:-150px;padding:20px;">
+  <div>Please enter Excercie Data</div>
+  <div>
+    <input type="hidden" name="id" id="upId" size="40"/>
+    <p><label>Name:</label><input type="text" name="name" id="upName" size="40"/></p>
+    <p><label>Reps:</label><input type="text" name="reps" id="upReps" size="40"/></p>
+    <p><label>Weight:</label><input type="text" name="weight" id="upWeight" size="40"/></p>
+    <p><label>Date:</label>Will use current server date by default</p>
+    <p><label>Unit:</label><select name="unit" id="upUnit"><option value="lbs">lbs</option><option value="kg">kg</option></select></p>
+    <p><input type="button" name="submit" value="submit" id="updateData" onclick="update()"></p>
+  </div>
+</form>
+
+<div id="box" style="background-color:rgba(0,0,0,.8);position:fixed;top:0;right:0;left:0;bottom:0;z-index:998;visibility:hidden;"></div>
+<h1>Database interactions and UI</h1>
+<form id="insertForm">
+  <div>Please enter Excercie Data</div>
+  <div>
+    <p><label>Name:</label><input type="text" name="name" id="myName" size="40"/></p>
+    <p><label>Reps:</label><input type="text" name="reps" id="myReps" size="40"/></p>
+    <p><label>Weight:</label><input type="text" name="weight" id="myWeight" size="40"/></p>
+    <p><label>Date:</label>Will use current server date by default</p>
+    <p><label>Unit:</label><select name="unit" id="myUnit"><option value="lbs">lbs</option><option value="kg">kg</option></select></p>
+    <p><input type="button" name="submit" value="submit" id="insertData" onclick="insert()"></p>
+  </div>
+</form>
+<table id="dataTable">
+	<tr><th colspan="7">All Data In Mysql</th></tr>
+	<tr><td>Name</td><td>Reps</td><td>Weight</td><td>Date</td><td>Unit</td><td>Edit</td><td>Delete</td></tr>
+
+  {{#each records}}
+	<tr id="item_{{this.id}}">
+    <td>{{this.name}}</td>
+    <td>{{this.reps}}</td>
+    <td>{{this.weight}}</td>
+    <td>{{this.date}}</td>
+    <td>{{this.unit}}</td>
+    <td><input type="button" name="update" value="update" onclick="showUpdateForm({{this.id}},'{{this.name}}',{{this.reps}},{{this.weight}},'{{this.unit}}')"></td>
+    <td><input type="button" name="delete" value="delete" onclick="deleteById({{this.id}})"></td>
+  </tr>
+  {{/each}}
+</table>
+<script type="text/javascript" src="js/ajax.js"></script>
+{{/if}}
