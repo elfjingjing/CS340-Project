@@ -44,11 +44,15 @@
                 {{#each records}}
                 <tr> 
                     <td>{{this.couponID}}</td>
-                    <td><input type="number" name="amount{{this.couponID}}" value="{{this.amount}}" ></td>
-                    <td><input type="text" name="valid{{this.couponID}}" value="{{this.valid}}"></td> 
+                    <td><input type="number" id="amount{{this.couponID}}" name="amount{{this.couponID}}" value="{{this.amount}}" ></td>
+                    <td><input type="text" id="valid{{this.couponID}}" name="valid{{this.couponID}}" value="{{this.valid}}"></td> 
                     <td>
-                    <input type="button" id="update_{{this.couponID}}" value="Update">
-                    <input type="button" id="delete_{{this.couponID}}" value="Delete">
+                    <input
+                        type="button"
+                        id="update_{{this.couponID}}"
+                        value="Update"
+                        onclick="updateCoupon({{this.couponID}})">
+                    <input type="button" id="delete_{{this.couponID}}" value="Delete" onclick="deleteCoupon({{this.couponID}})">
                     </td>
                 </tr>
                 {{/each}}

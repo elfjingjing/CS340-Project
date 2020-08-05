@@ -7,7 +7,7 @@ app.use('/style.css', express.static(__dirname + '/views/style.css'));
 app.use('/images', express.static(__dirname + '/views/images'));
 
 // serve files from the public directory
-app.use(express.static('public'));
+app.use('/static', express.static('public'));
 
 var handlebars = require('express-handlebars').create({defaultLayout:'main'});
 var bodyParser = require('body-parser');

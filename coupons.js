@@ -18,7 +18,7 @@ module.exports = function(){
     router.get('/',function(req,res){
         var context = {};
         var mysql = req.app.get('mysql');
-        
+        context.jsscripts = ["couponOperations.js"];
         mysql.pool.query('SELECT * FROM Coupons;', function(err, rows, fields){
           if(err){
             console.debug(err);
@@ -51,7 +51,23 @@ module.exports = function(){
         });
     });
 
-
+    router.put('/:id', function(req, res){
+        var mysql = req.app.get('mysql');
+        console.log(req.body)
+        console.log(req.params.id)
+        var sql = "UPDATE Coupons SET amount=?, valid=? WHERE couponID=?";
+        var inserts = [req.body.amount, req.body.valid, req.params.id];
+        sql = mysql.pool.query(sql,inserts,function(error, results, fields){
+            if(error){
+                console.log(error)
+                res.write(JSON.stringify(error));
+                res.end();
+            }else{
+                res.status(200);
+                res.end();
+            }
+        });
+    });
 
     /* Route to delete a coupon, simply returns a 202 upon success. Ajax will handle this. */
 
