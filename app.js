@@ -6,6 +6,9 @@ var app = express();
 app.use('/style.css', express.static(__dirname + '/views/style.css'));
 app.use('/images', express.static(__dirname + '/views/images'));
 
+// serve files from the public directory
+app.use(express.static('public'));
+
 var handlebars = require('express-handlebars').create({defaultLayout:'main'});
 var bodyParser = require('body-parser');
 var dateFormat = require('dateformat');
@@ -15,6 +18,7 @@ app.use(bodyParser.urlencoded({ extended: true })); // support url encoded bodie
 app.engine('handlebars', handlebars.engine);
 app.set('view engine', 'handlebars');
 app.set('port', 9813);
+app.set('mysql', mysql);
 
 app.get('/',function(req,res){
   var context = {};
@@ -95,22 +99,7 @@ app.get('/customers.html',function(req,res){
   });
 });
 
-app.get('/coupons.html',function(req,res){
-  var context = {};
-  mysql.pool.query('SELECT * FROM Coupons;', function(err, rows, fields){
-    if(err){
-      console.debug(err);
-     // next(err);
-      res.status(500);
-      res.render('500');
-      return;
-    }
-     
-    context.records = rows;
-    res.render('coupons', context);
-  });
-});
-
+app.use('/coupons', require('./coupons.js'));
 
 app.use(function(req,res){
   res.status(404);

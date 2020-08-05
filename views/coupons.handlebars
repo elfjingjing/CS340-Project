@@ -12,7 +12,7 @@
             <li><a href="categories.html">Categories</a></li>
             <li><a href="items.html">Items</a></li>
             <li><a href="customers.html">Customers</a></li>
-            <li><a href="coupons.html">Coupons</a></li>
+            <li><a href="coupons">Coupons</a></li>
             <li><a href="orders.html">Orders</a></li>
             </ul>
             </nav><!-- /#nav-main -->
@@ -25,10 +25,11 @@
             <h3>Add a new coupon:</h3>
             <form id="addcoupon" action="/coupons" method="post">
                 Amount: <input type="number" name="amount"><br>
-                Valid: <input type="radio" name="valid" value=:"available"><br>
-                       <label for="valid">available</label><br>
-                       <input type="radio" name="valid" value=:"expired"><br>
-                       <label for="valid">expired</label><br>
+                Valid: <input type="radio" name="valid" value=:"available">
+                       <label for="valid">available</label>
+                       <input type="radio" name="valid" value=:"expired">
+                       <label for="valid">expired</label>
+                       <br><br>
             <input type="submit" id="createButton" value="Add Coupon">
             </form>
 

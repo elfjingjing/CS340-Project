@@ -13,34 +13,31 @@ module.exports = function(){
         });
     }
 
-
-
     /*Display all coupons. Requires web based javascript to delete users with AJAX*/
 
-    router.get('/', function(req, res){
-        var callbackCount = 0;
+    router.get('/',function(req,res){
         var context = {};
-        context.jsscripts = ["deleteperson.js","filterpeople.js","searchpeople.js"];
         var mysql = req.app.get('mysql');
-        getPeople(res, mysql, context, complete);
-        getPlanets(res, mysql, context, complete);
-        function complete(){
-            callbackCount++;
-            if(callbackCount >= 2){
-                res.render('people', context);
-            }
-
-        }
-    });
-
-
+        
+        mysql.pool.query('SELECT * FROM Coupons;', function(err, rows, fields){
+          if(err){
+            console.debug(err);
+           // next(err);
+            res.status(500);
+            res.render('500');
+            return;
+          }
+           
+          context.records = rows;
+          res.render('coupons', context);
+        });
+      });
 
     /* Adds a coupon, redirects to the coupon page after adding */
-
     router.post('/', function(req, res){
         /* console.log(req.body.homeworld)
         console.log(req.body) */
-        var mysql = req.app.get('mysql');
+        var mysql =     req.app.get('mysql');
         var sql = "INSERT INTO Coupons (amount, valid) VALUES (?,?)";
         var inserts = [req.body.amount, req.body.valid];
         sql = mysql.pool.query(sql,inserts,function(error, results, fields){
@@ -60,7 +57,7 @@ module.exports = function(){
 
     router.delete('/:id', function(req, res){
         var mysql = req.app.get('mysql');
-        var sql = "DELETE FROM Coupons WHERE character_id = ?";
+        var sql = "DELETE FROM Coupons WHERE couponID = ?";
         var inserts = [req.params.id];
         sql = mysql.pool.query(sql, inserts, function(error, results, fields){
             if(error){
