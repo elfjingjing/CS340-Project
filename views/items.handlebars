@@ -13,6 +13,7 @@
             <li><a href="categories.html">Categories</a></li>
             <li><a href="items.html">Items</a></li>
             <li><a href="customers.html">Customers</a></li>
+            <li><a href="coupons.html">Coupons</a></li>
             <li><a href="orders.html">Orders</a></li>
             </ul>
             </nav><!-- /#nav-main -->
@@ -29,22 +30,7 @@
             <input type="text" name="name" id="name" placeholder="Name" size="30"><br><br>
             <label for="price">Price of the item:</label>
             $ <input type="text" name="price" id="price" placeholder="Price" size="20"><br><br>
-            <!-- <label for="sweet">Sweet Level of the item:</label>
-            <select name="sweet" id="sweet">
-                <option value="0">0%</option>
-                <option value="30">30%</option>
-                <option value="50">50%</option>
-                <option value="80">80%</option>
-                <option value="100">100%</option>
-            </select><br><br>
-            <label for="iced">Iced Level of the item:</label>
-            <select name="iced" id="iced">
-                <option value="0">0%</option>
-                <option value="30">30%</option>
-                <option value="50">50%</option>
-                <option value="80">80%</option>
-                <option value="100">100%</option>
-            </select><br><br> -->
+        
             <label for="categoryId">Category of the item:</label>
             <select name="categoryId" id="categoryId">
                 <option value="1">Milk Tea</option>
@@ -53,9 +39,17 @@
             </select><br><br>
             <input type="submit" id="createButton" value="Add Item">
         </fieldset>
+        </form><br>
+        
+        <form id="filterItem" action="" method="">
+        <h2><label>Filter by Categories</label></h2>
+          <select name="categories" id="categoryFilter">
+              {{#each categories}}
+            <option value="{{categoryID}}">{{categoryName}}</option>
+             {{/each}}
+          </select><br>
+        <input type="button" value="Filter" onclick="filterItemByCategory()">
         </form>
-    
-
 
         <h2>Current Items</h2>
             <table>

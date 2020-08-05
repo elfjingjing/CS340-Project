@@ -26,6 +26,11 @@ app.get('/index.html',function(req,res){
   res.render('index', context);
 });
 
+app.get('/about.html',function(req,res){
+  var context = {};
+  res.render('about', context);
+});
+
 
 app.get('/categories.html',function(req,res){
   var context = {};
@@ -90,8 +95,21 @@ app.get('/customers.html',function(req,res){
   });
 });
 
-
-
+app.get('/coupons.html',function(req,res){
+  var context = {};
+  mysql.pool.query('SELECT * FROM Coupons;', function(err, rows, fields){
+    if(err){
+      console.debug(err);
+     // next(err);
+      res.status(500);
+      res.render('500');
+      return;
+    }
+     
+    context.records = rows;
+    res.render('coupons', context);
+  });
+});
 
 
 app.use(function(req,res){
