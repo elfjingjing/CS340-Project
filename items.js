@@ -11,7 +11,7 @@ module.exports = function(){
         context.jsscripts = ["itemOperations.js"];
         mysql.pool.query('SELECT * FROM Items;', function(err, rows, fields){
           if(err){
-            console.debug(err);
+            console.log(err);
            // next(err);
             res.status(500);
             res.render('500');
@@ -19,7 +19,7 @@ module.exports = function(){
           }
           mysql.pool.query('SELECT * FROM Categories;', function(err, categoryRows, fields){
             if(err){
-              console.debug(err);
+              console.log(err);
              // next(err);
               res.status(500);
               res.render('500');
@@ -37,7 +37,7 @@ module.exports = function(){
                     rows[i].categories[j].selected= " ";
                 }
               }
-              console.debug(context.records[i].categories);
+              console.log(context.records[i].categories);
             }
 
             res.render('items', context);
@@ -53,7 +53,7 @@ module.exports = function(){
         context.jsscripts = ["itemOperations.js"];
         mysql.pool.query('SELECT * FROM Items Where categoryID=?;', [req.params.cid], function(err, rows, fields){
           if(err){
-            console.debug(err);
+            console.log(err);
            // next(err);
             res.status(500);
             res.render('500');
@@ -61,7 +61,7 @@ module.exports = function(){
           }
           mysql.pool.query('SELECT * FROM Categories;', function(err, categoryRows, fields){
             if(err){
-              console.debug(err);
+              console.log(err);
              // next(err);
               res.status(500);
               res.render('500');
@@ -79,7 +79,7 @@ module.exports = function(){
                     rows[i].categories[j].selected= " ";
                 }
               }
-              console.debug(context.records[i].categories);
+              console.log(context.records[i].categories);
             }
 
             res.render('items', context);

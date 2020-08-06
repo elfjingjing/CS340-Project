@@ -11,7 +11,7 @@ module.exports = function(){
         context.jsscripts = ["customerOperations.js"];
         mysql.pool.query('SELECT * FROM Customers;', function(err, rows, fields){
           if(err){
-            console.debug(err);
+            console.log(err);
            // next(err);
             res.status(500);
             res.render('500');

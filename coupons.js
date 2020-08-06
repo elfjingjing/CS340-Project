@@ -21,7 +21,7 @@ module.exports = function(){
         context.jsscripts = ["couponOperations.js"];
         mysql.pool.query('SELECT * FROM Coupons;', function(err, rows, fields){
           if(err){
-            console.debug(err);
+            console.log(err);
            // next(err);
             res.status(500);
             res.render('500');

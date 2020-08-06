@@ -10,7 +10,7 @@ module.exports = function(){
         context.jsscripts = ["categoryOperations.js"];
         mysql.pool.query('SELECT * FROM Categories;', function(err, rows, fields){
           if(err){
-            console.debug(err);
+            console.log(err);
            // next(err);
             res.status(500);
             res.render('500');
