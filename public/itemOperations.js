@@ -21,3 +21,8 @@ function deleteItem(id){
         }
     })
 };
+
+function filterItemByCategory() {
+    var cid = document.getElementById('categoryFilter').value;
+    window.location.replace("/items/" + cid);
+}

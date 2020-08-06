@@ -45,6 +45,48 @@ module.exports = function(){
         });
       });
 
+    /*Display all coupons. Requires web based javascript to delete users with AJAX*/
+
+    router.get('/:cid',function(req,res){
+        var context = {};
+        var mysql = req.app.get('mysql');
+        context.jsscripts = ["itemOperations.js"];
+        mysql.pool.query('SELECT * FROM Items Where categoryID=?;', [req.params.cid], function(err, rows, fields){
+          if(err){
+            console.debug(err);
+           // next(err);
+            res.status(500);
+            res.render('500');
+            return;
+          }
+          mysql.pool.query('SELECT * FROM Categories;', function(err, categoryRows, fields){
+            if(err){
+              console.debug(err);
+             // next(err);
+              res.status(500);
+              res.render('500');
+              return;
+            }
+             
+            context.records = rows;
+            context.categories = categoryRows;
+            for (var i in rows) {
+              rows[i].categories = categoryRows;
+              for (var j in rows[i].categories) {
+                if (rows[i].categoryID == rows[i].categories[j].categoryID) {
+                    rows[i].categories[j].selected= "selected";
+                } else {
+                    rows[i].categories[j].selected= " ";
+                }
+              }
+              console.debug(context.records[i].categories);
+            }
+
+            res.render('items', context);
+          });
+        });
+      });
+
     /* Adds a coupon, redirects to the coupon page after adding */
     router.post('/', function(req, res){
         /* console.log(req.body.homeworld)
