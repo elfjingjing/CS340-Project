@@ -36,68 +36,11 @@ app.get('/about.html',function(req,res){
 });
 
 
-app.get('/categories.html',function(req,res){
-  var context = {};
-  mysql.pool.query('SELECT * FROM Categories;', function(err, rows, fields){
-    if(err){
-      console.debug(err);
-     // next(err);
-      res.status(500);
-      res.render('500');
-      return;
-    }
-     
-    context.records = rows;
-    res.render('categories', context);
-  });
-});
+app.use('/customers', require('./customers.js'));
 
-app.get('/items.html',function(req,res){
-  var context = {};
-  mysql.pool.query('SELECT * FROM Items;', function(err, rows, fields){
-    if(err){
-      console.debug(err);
-     // next(err);
-      res.status(500);
-      res.render('500');
-      return;
-    }
-    mysql.pool.query('SELECT * FROM Categories;', function(err, categoryRows, fields){
-    if(err){
-      console.debug(err);
-     // next(err);
-      res.status(500);
-      res.render('500');
-      return;
-    }
-     
-    context.records = rows;
-    for (var i in rows) {
-      rows[i].categories = categoryRows;
-    }
+app.use('/items', require('./items.js'));
 
-    res.render('items', context);
-  });
-     
-    
-  });
-});
-
-app.get('/customers.html',function(req,res){
-  var context = {};
-  mysql.pool.query('SELECT * FROM Customers;', function(err, rows, fields){
-    if(err){
-      console.debug(err);
-     // next(err);
-      res.status(500);
-      res.render('500');
-      return;
-    }
-     
-    context.records = rows;
-    res.render('customers', context);
-  });
-});
+app.use('/categories', require('./categories.js'));
 
 app.use('/coupons', require('./coupons.js'));
 

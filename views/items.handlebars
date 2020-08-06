@@ -10,9 +10,9 @@
             <ul>
             <li><a href="index.html">Home</a></li>
             <li><a href="about.html">About</a></li>
-            <li><a href="categories.html">Categories</a></li>
-            <li><a href="items.html">Items</a></li>
-            <li><a href="customers.html">Customers</a></li>
+            <li><a href="categories">Categories</a></li>
+            <li><a href="items">Items</a></li>
+            <li><a href="customers">Customers</a></li>
             <li><a href="coupons">Coupons</a></li>
             <li><a href="orders.html">Orders</a></li>
             </ul>
@@ -23,7 +23,7 @@
          
         <div id="content">
         <h2>Items</h2>
-        <form id="itemsForm">
+        <form id="addItem" action="/items" method="post">
         <fieldset>
             <legend>Create New Item</legend>
             <label for="name">Item Name:</label>
@@ -33,13 +33,14 @@
         
             <label for="categoryId">Category of the item:</label>
             <select name="categoryId" id="categoryId">
-                <option value="1">Milk Tea</option>
-                <option value="2">Fruit Tea</option>
-                <option value="3">Coffee</option>
+            {{#each categories}}
+                <option value="{{categoryID}}">{{categoryName}}</option>
+            {{/each}}
             </select><br><br>
             <input type="submit" id="createButton" value="Add Item">
         </fieldset>
-        </form><br>
+        </form>
+        <br>
         
         <form id="filterItem" action="" method="">
         <h2><label>Filter by Categories</label></h2>
@@ -62,18 +63,18 @@
 
                 {{#each records}}
                 <tr> 
-                    <td><input type="text" name="item{{this.itemID}}" value="{{this.itemName}}"></td>
-                    <td><input type="text" name="price{{this.itemID}}" value="${{this.price}}" size = 5></td> 
+                    <td><input type="text" id="item{{this.itemID}}" value="{{this.itemName}}"></td>
+                    <td>$<input type="text" id="price{{this.itemID}}" value="{{this.price}}" size = 5></td> 
                     <td>
-                        <select name="categoryOptions" id="categoryOptions">
-                            {{#each categories}}
-                            <option value="{{this.categoryID}}">{{this.categoryName}}</option>
+                        <select name="categoryOptions" id="category{{this.itemID}}">
+                            {{#each this.categories}}
+                            <option value="{{this.categoryID}}" {{this.selected}}>{{this.categoryName}}</option>
                             {{/each}}
                         </select>
                     </td>
                     <td>
-                    <input type="button" id="update_{{this.itemID}}" value="Update">
-                    <input type="button" id="delete_{{this.itemID}}" value="Delete">
+                    <input type="button" id="update_{{this.itemID}}" onclick="updateItem({{this.itemID}})" value="Update">
+                    <input type="button" id="delete_{{this.itemID}}" onclick="deleteItem({{this.itemID}})" value="Delete">
                     </td>
                 </tr>
                 {{/each}}

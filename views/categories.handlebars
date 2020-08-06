@@ -9,9 +9,9 @@
           <ul>
           <li><a href="index.html">Home</a></li>
           <li><a href="about.html">About</a></li>
-          <li><a href="categories.html">Categories</a></li>
-          <li><a href="items.html">Items</a></li>
-          <li><a href="customers.html">Customers</a></li>
+          <li><a href="categories">Categories</a></li>
+          <li><a href="items">Items</a></li>
+          <li><a href="customers">Customers</a></li>
           <li><a href="coupons">Coupons</a></li>
           <li><a href="orders.html">Orders</a></li>
           </ul>
@@ -22,7 +22,7 @@
 
       <div id="content">
           <h2>Categories</h2>
-          <form id="categoriesForm">
+          <form id="addCategory" action="/categories" method="post">
           <fieldset>
             <legend>Create New Category</legend>
             <label for="name">Category Name:</label>
@@ -51,11 +51,11 @@
             {{#each records}}
             <tr>
             <td>
-              <input type="text" name="category{{this.categoryID}}" value="{{this.categoryName}}">
+              <input type="text" id="category{{this.categoryID}}" value="{{this.categoryName}}">
             </td>
             <td>
-              <input type="button" id="update_{{this.categoryID}}" value="Update">
-              <input type="button" id="delete_{{this.categoryID}}" value="Delete">
+              <input type="button" id="update_{{this.categoryID}}" onclick="updateCategory({{this.categoryID}})" value="Update">
+              <input type="button" id="delete_{{this.categoryID}}" onclick="deleteCategory({{this.categoryID}})" value="Delete">
             </td>
             </tr>
             {{/each}}

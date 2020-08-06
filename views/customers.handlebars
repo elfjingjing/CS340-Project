@@ -9,9 +9,9 @@
             <ul>
             <li><a href="index.html">Home</a></li>
             <li><a href="about.html">About</a></li>
-            <li><a href="categories.html">Categories</a></li>
-            <li><a href="items.html">Items</a></li>
-            <li><a href="customers.html">Customers</a></li>
+            <li><a href="categories">Categories</a></li>
+            <li><a href="items">Items</a></li>
+            <li><a href="customers">Customers</a></li>
             <li><a href="coupons">Coupons</a></li>
             <li><a href="orders.html">Orders</a></li>
             </ul>
@@ -22,7 +22,7 @@
          
         <div id="content">
             <h2>Customers</h2>
-            <form id="customerForm">
+            <form id="addCustomer" action="/customers" method="post">
             <fieldset>
                 <legend>Add a New Customer</legend>
                 <input type="text" name ="firstName" id="firstName" placeholder="First Name" size="20" required>
@@ -45,12 +45,12 @@
                 {{#each records}}
                 <tr> 
                     <td>{{this.customerID}}</td>
-                    <td><input type="text" name="customerf{{this.customerID}}" value="{{this.firstName}}" size = 8></td>
-                    <td><input type="text" name="customerl{{this.customerID}}" value="{{this.lastName}}" size = 8></td> 
-                    <td><input type="text" name="customerEmail{{this.customerID}}" value="{{this.email}}"></td> 
+                    <td><input type="text" id="customerf{{this.customerID}}" value="{{this.firstName}}" size = 8></td>
+                    <td><input type="text" id="customerl{{this.customerID}}" value="{{this.lastName}}" size = 8></td> 
+                    <td><input type="text" id="customerEmail{{this.customerID}}" value="{{this.email}}"></td> 
                     <td>
-                    <input type="button" id="update_{{this.customerID}}" value="Update">
-                    <input type="button" id="delete_{{this.customerID}}" value="Delete">
+                    <input type="button" id="update_{{this.customerID}}" onclick="updateCustomer({{this.customerID}})" value="Update">
+                    <input type="button" id="delete_{{this.customerID}}" onclick="deleteCustomer({{this.customerID}})"value="Delete">
                     </td>
                 </tr>
                 {{/each}}
