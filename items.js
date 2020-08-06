@@ -3,7 +3,7 @@ module.exports = function(){
     var router = express.Router();
 
 
-    /*Display all coupons. Requires web based javascript to delete users with AJAX*/
+    /*Display all items. Requires web based javascript to delete users with AJAX*/
 
     router.get('/',function(req,res){
         var context = {};
@@ -45,7 +45,7 @@ module.exports = function(){
         });
       });
 
-    /*Display all coupons. Requires web based javascript to delete users with AJAX*/
+    /*Display all items. Requires web based javascript to delete users with AJAX*/
 
     router.get('/:cid',function(req,res){
         var context = {};
@@ -87,7 +87,7 @@ module.exports = function(){
         });
       });
 
-    /* Adds a coupon, redirects to the coupon page after adding */
+    /* Adds an item, redirects to the items page after adding */
     router.post('/', function(req, res){
         /* console.log(req.body.homeworld)
         console.log(req.body) */
@@ -123,7 +123,7 @@ module.exports = function(){
         });
     });
 
-    /* Route to delete a coupon, simply returns a 202 upon success. Ajax will handle this. */
+    /* Route to delete an item, simply returns a 202 upon success. Ajax will handle this. */
 
     router.delete('/:id', function(req, res){
         var mysql = req.app.get('mysql');

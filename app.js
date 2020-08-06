@@ -44,6 +44,8 @@ app.use('/categories', require('./categories.js'));
 
 app.use('/coupons', require('./coupons.js'));
 
+app.use('/orders', require('./orders.js'));
+
 app.use(function(req,res){
   res.status(404);
   res.render('404');

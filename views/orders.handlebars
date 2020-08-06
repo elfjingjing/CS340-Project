@@ -1,0 +1,108 @@
+
+    <div id="container">
+            <header id="header">
+            <h1><a href="index.html">&hearts; HappyBoba &hearts;</a></h1>
+            </header>
+
+            <div id="menu">
+            <nav id="nav-main">
+            <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="categories">Categories</a></li>
+            <li><a href="items">Items</a></li>
+            <li><a href="customers">Customers</a></li>
+            <li><a href="coupons">Coupons</a></li>
+            <li><a href="orders">Orders</a></li>
+            </ul>
+            </nav><!-- /#nav-main -->
+
+            <img alt="happy boba time" src="images/background1.jpg" width="300" height="300"/>
+        </div><!-- #menu -->
+         
+        <div id="content">
+             <h2>Orders</h2>
+             <h3>Create a New Order</h3>
+             <form id="addorder" action="/orders" method="post">
+               Payment: <input type="text" name ="payment" id="payment" size="20">
+               Order Date: <input type="datetime-local" name ="orderDate" id="orderDate" size="20"><br>
+               Customer:  <input type="text" name ="customerID" id="customerID" size="20">
+               Coupon : <input type="text" name ="couponNum" id="couponNum" size="20"><br>
+               
+                <fieldset id="orderRows">
+                <legend>Order Details</legend>
+                <select name ="selectCategory1" id="selectCategory1">
+                    <option value="-1">Category</option>
+                    {{#each categories}}
+                        <option value="{{categoryID}}">{{categoryName}}</option>
+                    {{/each}}
+                </select>
+                <select name ="itemInCategory1" id="itemInCategory1">
+                    <option value="-1">Item</option>
+                    {{#each items}}
+                        <option value="{{itemID}}">{{itemName}}</option>
+                    {{/each}}
+                </select>
+                Sweet: <input type="number" min= "0" id="sweetOption1" name="sweetOption1" size="1">
+                <br>
+                Iced: <input type="number" min= "0" id="icedOption1" name="icedOption1" size="1">
+                Quantity: <input type="number" min= "0" id="quantity1" name="quantity1" size="1">
+                
+                <br>
+                <br>
+
+                <select name ="selectCategory2" id="selectCategory2">
+                    <option value="-1">Category</option>
+                    {{#each categories}}
+                        <option value="{{categoryID}}">{{categoryName}}</option>
+                    {{/each}}
+                </select>
+                <select name ="itemInCategory2" id="itemInCategory2">
+                    <option value="-1">Item</option>
+                    {{#each items}}
+                        <option value="{{itemID}}">{{itemName}}</option>
+                    {{/each}}
+                </select>
+                Sweet: <input type="number" min= "0" id="sweetOption2" name="sweetOption2" size="1">
+                <br>
+                Iced: <input type="number" min= "0" id="icedOption2" name="icedOption2" size="1">
+                Quantity: <input type="number" min= "0" id="quantity2" name="quantity2" size="1">
+            </fieldset>
+
+                <input type="button" id="postSubmit" value="Add" onclick="addOrder()">
+    
+            </form>
+        
+
+        
+            <br>
+            <br>
+            <h2>History Orders</h2>
+            <table>
+                <tr>
+                    <th>ID</th>
+                    <th>Date</th>
+                    <th>Customer</th>
+                    <th>Items</th>
+                    <th>Coupon</th>
+                    <th>Quantity</th>
+                </tr>
+                {{#each orders}}
+                    <tr>
+                        <td>{{orderID}}</td>
+                        <td>{{orderDate}}</td>
+                        <td>{{lastName}}</td>
+                        <td>{{itemName}}</td>
+                        <td>{{couponID}}</td>
+                        <td>{{quantity}}</td>
+                    </tr>
+                {{/each}}
+            </table>
+        </div><!-- #content -->
+ 
+
+    <footer id="footer">
+        <p class="copyright">&copy;2020 HappyBoba  &bull; Site designed by Team52 &bull; All Rights Reserved</p>
+    </footer>
+</div><!-- #container -->
+

@@ -22,6 +22,7 @@ app.use('/categories', require('./categories.js'));
 app.use('/items', require('./items.js'));
 app.use('/customers', require('./customers.js'));
 app.use('/coupons', require('./coupons.js'));
+app.use('/orders', require('./orders.js'));
 app.use('/iteminorders', require('./iteminorders.js'));
 app.use('/', express.static('public'));
 
