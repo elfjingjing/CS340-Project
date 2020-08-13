@@ -24,9 +24,20 @@ module.exports = function(){
         });
     }
 
+    function getCustomers(res, mysql, context, complete){
+        mysql.pool.query("SELECT *, CONCAT(firstName, ' ', lastName) as name FROM Customers", function(error, results, fields){
+            if(error){
+                res.write(JSON.stringify(error));
+                res.end();
+            }
+            context.customers  = results;
+            complete();
+        });
+    }
+
     function getOrders(res, mysql, context, complete){
-        mysql.pool.query("select Orders.orderID, Orders.payment, Orders.orderDate, Orders.couponID, " +
-            "Customers.firstName, Customers.lastName, Items.itemName, ItemsInOrders.quantity from Orders " +
+        mysql.pool.query("select Orders.orderID, Orders.payment, DATE_FORMAT(Orders.orderDate,'%m/%d/%Y') as orderDate, Orders.couponID, " +
+            "CONCAT(Customers.firstName, ' ', Customers.lastName) as name, Items.itemName, ItemsInOrders.quantity, ItemsInOrders.sweet, ItemsInOrders.iced from Orders " +
             "left join Customers on Orders.customerID = Customers.customerID " +
             "right join ItemsInOrders on Orders.orderID = ItemsInOrders.orderID " +
             "left join Items on Items.itemID = ItemsInOrders.itemID", 
@@ -35,36 +46,8 @@ module.exports = function(){
                     res.write(JSON.stringify(error));
                     res.end();
                 }
-                // results.name = results.firstName + " " + results.lastName;
                 context.orders  = results;
                 complete();
-        });
-    }
-    
-    function addOrder(res, mysql, context, complete){
-        var sql = "INSERT INTO Orders (payment, orderDate,customerID,couponID) VALUES (?,?,?,?)";
-        var inserts = [req.body.payment, req.body.orderDate,req.body.customerID,req.body.couponID];
-        sql = mysql.pool.query(sql,inserts,function(error, results, fields){
-            if(error){
-                console.log(JSON.stringify(error))
-                res.write(JSON.stringify(error));
-                res.end();
-            }else{
-                res.redirect('/orders');
-            }
-        });
-
-        
-        var sql = "INSERT INTO Orders (payment, orderDate,customerID,couponID) VALUES (?,?,?,?)";
-        var inserts = [req.body.payment, req.body.orderDate,req.body.customerID,req.body.couponID];
-        sql = mysql.pool.query(sql,inserts,function(error, results, fields){
-            if(error){
-                console.log(JSON.stringify(error))
-                res.write(JSON.stringify(error));
-                res.end();
-            }else{
-                res.redirect('/orders');
-            }
         });
     }
     
@@ -76,9 +59,10 @@ module.exports = function(){
         getCategories(res, mysql, context, complete)
         getItems(res, mysql, context, complete)
         getOrders(res, mysql, context, complete)
+        getCustomers(res, mysql, context, complete)
         function complete(){
             callbackCount++;
-            if(callbackCount >= 3){
+            if(callbackCount >= 4){
                 res.render('orders', context);
             }
         };
@@ -133,7 +117,7 @@ module.exports = function(){
 
     router.delete('/:id', function(req, res){
         var mysql = req.app.get('mysql');
-        var sql = "DELETE FROM Coupons WHERE couponID = ?";
+        var sql = "DELETE FROM ItemsInOrders WHERE orderID = ?";
         var inserts = [req.params.id];
         sql = mysql.pool.query(sql, inserts, function(error, results, fields){
             if(error){
@@ -142,7 +126,19 @@ module.exports = function(){
                 res.status(400);
                 res.end();
             }else{
-                res.status(202).end();
+                console.log(sql);
+                sql = "DELETE FROM Orders WHERE orderID = ?";
+                inserts = [req.params.id];
+                sql = mysql.pool.query(sql, [inserts], function(error, results, fields){
+                    if(error){
+                        console.log(JSON.stringify(error))
+                        res.write(JSON.stringify(error));
+                        res.end();
+                    }else{
+                        console.log(results);
+                        res.status(202).end();
+                    }
+                });
             }
         })
     })

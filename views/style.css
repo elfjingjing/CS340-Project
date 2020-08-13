@@ -167,6 +167,11 @@ th, td {
     overflow: hidden;
 }
 
+#orderDetails {
+	margin-left:120px;
+	overflow: visible;
+}
+
 #footer {
     margin-top: 15px;
     margin-bottom: 30px;
