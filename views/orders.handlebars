@@ -24,11 +24,21 @@
              <h2>Orders</h2>
              <h3>Create a New Order</h3>
              <form id="addorder" action="/orders" method="post">
-               Payment: <input type="text" name ="payment" id="payment" size="20">
-               Order Date: <input type="datetime-local" name ="orderDate" id="orderDate" size="20"><br>
-               Customer:  <input type="text" name ="customerID" id="customerID" size="20">
+               Payment: (cardNo.) <input type="text" name ="payment" id="payment" size="20">
+               <br>
+               <br>
+               Order Date: <input type="datetime-local" name ="orderDate" id="orderDate" size="20">
+               <br>
+               <br>
+               <select name ="customerID" id="customerID">
+                    <option value="-1">Customer</option>
+                    {{#each customers}}
+                        <option value="{{customerID}}">{{name}}</option>
+                    {{/each}}
+                </select>
                Coupon : <input type="text" name ="couponNum" id="couponNum" size="20"><br>
-               
+               <br>
+
                 <fieldset id="orderRows">
                 <legend>Order Details</legend>
                 <select name ="selectCategory1" id="selectCategory1">
@@ -43,9 +53,8 @@
                         <option value="{{itemID}}">{{itemName}}</option>
                     {{/each}}
                 </select>
-                Sweet: <input type="number" min= "0" id="sweetOption1" name="sweetOption1" size="1">
-                <br>
-                Iced: <input type="number" min= "0" id="icedOption1" name="icedOption1" size="1">
+                Sweet: <input type="number" min= "0" id="sweetOption1" name="sweetOption1" size="1"  max="3">
+                Iced: <input type="number" min= "0" id="icedOption1" name="icedOption1" size="1" max="3"><br>
                 Quantity: <input type="number" min= "0" id="quantity1" name="quantity1" size="1">
                 
                 <br>
@@ -63,20 +72,25 @@
                         <option value="{{itemID}}">{{itemName}}</option>
                     {{/each}}
                 </select>
-                Sweet: <input type="number" min= "0" id="sweetOption2" name="sweetOption2" size="1">
+                Sweet: <input type="number" min= "0" id="sweetOption2" name="sweetOption2" size="1" max="3">
+                Iced: <input type="number" min= "0" id="icedOption2" name="icedOption2" size="1"  max="3"><br>
+                Quantity: <input type="number" min= "0" id="quantity2" name="quantity2" size="1"><br>
                 <br>
-                Iced: <input type="number" min= "0" id="icedOption2" name="icedOption2" size="1">
-                Quantity: <input type="number" min= "0" id="quantity2" name="quantity2" size="1">
+                * Sweet: 0-no; 1-less; 2-half sweet; 3-regular 
+                <br>
+                * Iced : 0-no; 1-less; 2-regular; 3-extra
+   
             </fieldset>
-
-                <input type="button" id="postSubmit" value="Add" onclick="addOrder()">
+                <br><input type="button" id="postSubmit" value="Add" onclick="addOrder()">
+              
     
             </form>
-        
+             </div><!-- #content -->
 
         
             <br>
             <br>
+            <div id="orderDetails">
             <h2>History Orders</h2>
             <table>
                 <tr>
@@ -86,18 +100,24 @@
                     <th>Items</th>
                     <th>Coupon</th>
                     <th>Quantity</th>
+                    <th>Sweet</th>
+                    <th>Iced</th>
                 </tr>
                 {{#each orders}}
                     <tr>
                         <td>{{orderID}}</td>
                         <td>{{orderDate}}</td>
-                        <td>{{lastName}}</td>
+                        <td>{{name}}</td>
                         <td>{{itemName}}</td>
                         <td>{{couponID}}</td>
                         <td>{{quantity}}</td>
+                        <td>{{sweet}}</td>
+                        <td>{{iced}}</td>
+                        <td><input type="button" id="delete_{{orderID}}" value="Delete" onclick="deleteOrder({{orderID}})"></td>
                     </tr>
                 {{/each}}
             </table>
+            </div>
         </div><!-- #content -->
  
 

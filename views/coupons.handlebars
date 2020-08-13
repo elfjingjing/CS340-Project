@@ -24,11 +24,13 @@
             <h2>Coupons</h2>
             <h3>Add a new coupon:</h3>
             <form id="addcoupon" action="/coupons" method="post">
-                Amount: <input type="number" name="amount"><br>
+                Amount: <input type="number" name="amount" min="0"><br>
                 Valid: <input type="radio" name="valid" value=:"available">
                        <label for="valid">available</label>
                        <input type="radio" name="valid" value=:"expired">
-                       <label for="valid">expired</label>
+                       <label for="valid">expired</label><br>
+                       (1:available;0:expired)
+
                        <br><br>
             <input type="submit" id="createButton" value="Add Coupon">
             </form>
@@ -44,7 +46,7 @@
                 {{#each records}}
                 <tr> 
                     <td>{{this.couponID}}</td>
-                    <td><input type="number" id="amount{{this.couponID}}" name="amount{{this.couponID}}" value="{{this.amount}}" ></td>
+                    <td><input type="number" id="amount{{this.couponID}}" name="amount{{this.couponID}}" value="{{this.amount}}" width="20px"></td>
                     <td><input type="text" id="valid{{this.couponID}}" name="valid{{this.couponID}}" value="{{this.valid}}"></td> 
                     <td>
                     <input
