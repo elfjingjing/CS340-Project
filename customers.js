@@ -23,7 +23,7 @@ module.exports = function(){
         });
       });
 
-    /* Adds a coupon, redirects to the coupon page after adding */
+    /* Adds a customer, redirects to the customer page after adding */
     router.post('/', function(req, res){
         /* console.log(req.body.homeworld)
         console.log(req.body) */
@@ -59,7 +59,7 @@ module.exports = function(){
         });
     });
 
-    /* Route to delete a coupon, simply returns a 202 upon success. Ajax will handle this. */
+    /* Delete a customer, will also delete all the orders from this customer. */
 
     router.delete('/:id', function(req, res){
         var mysql = req.app.get('mysql');
